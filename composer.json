@@ -1,0 +1,18 @@
+{
+    "name": "amm/numeric_code",
+    "description": "numeric coode generator",
+    "type": "liobrary",
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Amm\\NumericCode\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "am-mokhtari"
+        }
+    ]
+}
