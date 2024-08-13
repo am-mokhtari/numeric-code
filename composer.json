@@ -1,7 +1,7 @@
 {
     "name": "amm/numeric_code",
-    "description": "numeric coode generator",
-    "type": "liobrary",
+    "description": "numeric code generator",
+    "type": "library",
     "require": {
         "php": "^8.0"
     },
