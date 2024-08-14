@@ -7,7 +7,7 @@ class NumericCode
     private static int $twoDigitsCount;
     private static int $consecutiveNumsCount;
 
-    public static function generate(string $template)
+    public static function generate(string $template): string
     {
         self::$twoDigitsCount = 0;
         self::$consecutiveNumsCount = 0;
@@ -21,7 +21,8 @@ class NumericCode
             $template = substr_replace($template, array_shift($numbers), $pos, 1);
             $pos = strpos($template, '#');
         }
-        var_dump($template);
+
+        return $template;
     }
 
 
