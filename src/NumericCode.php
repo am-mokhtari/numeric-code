@@ -2,6 +2,8 @@
 
 namespace Amm\NumericCode;
 
+use Exception;
+
 class NumericCode
 {
     private static int $twoDigitsCount;
@@ -14,6 +16,10 @@ class NumericCode
 
         $template = trim($template);
         $count = substr_count($template, '#');
+        if ($count > 8) {
+            throw new Exception('Digits must be at most 8');
+        }
+
         $numbers = self::numbersGenerator($count);
 
         $pos = strpos($template, '#');
