@@ -9,6 +9,12 @@ class NumericCode
     private static int $twoDigitsCount;
     private static int $consecutiveNumsCount;
 
+    /**
+     * @param string $template : # means digit
+     * Digits must be at most 8
+     * @return string
+     * @throws Exception
+     */
     public static function generate(string $template): string
     {
         self::$twoDigitsCount = 0;
@@ -31,7 +37,10 @@ class NumericCode
         return $template;
     }
 
-
+    /**
+     * @param int $count
+     * @return array
+     */
     private static function numbersGenerator(int $count): array
     {
         if ($count < 1) {
@@ -47,16 +56,13 @@ class NumericCode
         }
 
         return $code;
-
-//        do {
-//            $code = [];
-//            for ($i = 0; $i < $count; $i++) {
-//                $code[] = rand(1, 9);
-//            }
-//        } while (self::verify_code($code, $count));
-
     }
 
+    /**
+     * @param array $code
+     * @param int $digit
+     * @return bool
+     */
     private static function verify_code(array $code, int $digit): bool
     {
         if (empty($code))
@@ -82,7 +88,6 @@ class NumericCode
         }
 
         return true;
-
     }
 
     /**
@@ -109,19 +114,3 @@ class NumericCode
 
 NumericCode::generate('hi#am#m#');
 
-
-
-
-//        for ($i = 0; $i < $count; $i++) {
-//
-//            if (array_count_values($code)[$code[$i]] > 2) {
-//                return false;
-//            } elseif (
-//                ($i > 0 && $i < $count - 1) &&
-//                (($code[$i] - $digits[$i - 1]) ** 2) == 1 &&
-//                (($code[$i] - $digits[$i + 1]) ** 2) == 1
-//            ) {
-//                return false;
-//            }
-//        }
-//        return true;
