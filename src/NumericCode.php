@@ -112,5 +112,6 @@ class NumericCode
 
 }
 
-NumericCode::generate('hi#am#m#');
-
+//print_r(NumericCode::generate('hello-###/world'));
+//print_r(NumericCode::generate('hello-world'));
+//print_r(NumericCode::generate('#########'));
