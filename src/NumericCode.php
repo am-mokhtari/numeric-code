@@ -1,6 +1,6 @@
 <?php
 
-namespace Amm\NumericCode;
+namespace AmMokhtari\NumericCode;
 
 use Exception;
 

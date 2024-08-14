@@ -1,18 +1,20 @@
 {
-    "name": "amm/numeric_code",
-    "description": "numeric code generator",
+    "name": "am-mokhtari/numeric_code",
+    "description": "numeric code generator with custom template",
     "type": "library",
     "require": {
         "php": "^8.1"
     },
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Amm\\NumericCode\\": "src/"
+            "AmMokhtari\\NumericCode\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "am-mokhtari"
+            "name": "am-mokhtari",
+            "email": "mr.amirmohammad.mokhtari@gmail.com"
         }
     ]
 }
