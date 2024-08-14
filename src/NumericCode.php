@@ -16,11 +16,11 @@ class NumericCode
         $count = substr_count($template, '#');
         $numbers = self::numbersGenerator($count);
 
-//        $pos = strpos($template, '#');
-//        while ($pos !== false) {
-        $template = str_replace('#', $numbers, $template);
-//            $pos = strpos($template, '#');
-//        }
+        $pos = strpos($template, '#');
+        while ($pos !== false) {
+            $template = substr_replace($template, array_shift($numbers), $pos, 1);
+            $pos = strpos($template, '#');
+        }
         var_dump($template);
     }
 
@@ -35,7 +35,7 @@ class NumericCode
         for ($i = 0; $i < $count; $i++) {
             do {
                 $digit = rand(1, 9);
-            } while (self::verify_code($code, $digit));
+            } while (!self::verify_code($code, $digit));
             $code[] = $digit;
         }
 
