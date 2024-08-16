@@ -1,7 +1,7 @@
 # Description
 This package helps you to create safe numeric codes with your custome template.
 
-The template you enter is a required value for the generator function and must include the number of # to one digit replace to the place of each #.
+The template you enter is a required value for the generator function and must contain a number of # to replace each # with a digit.
 
 ### _Note that this program can only create codes up to 8 digits!_
 
