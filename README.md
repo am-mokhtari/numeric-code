@@ -1,4 +1,6 @@
-![logo](./icon.jpg)
+<div align="center">
+  <img src="./icon.jpg" alt="logo">
+</div>
 
 # Description
 ### This package helps you to create safe numeric codes with your custome template.  
