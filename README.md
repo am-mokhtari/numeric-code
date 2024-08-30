@@ -1,3 +1,5 @@
+![logo](./icon.jpg)
+
 # Description
 ### This package helps you to create safe numeric codes with your custome template.  
 ### The template you enter is a required value for the generator function and must contain a number of `#` to replace each `#` with a digit.
