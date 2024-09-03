@@ -1,5 +1,5 @@
 {
-    "name": "am-mokhtari/numeric_code",
+    "name": "am-mokhtari/numeric-code",
     "description": "numeric code generator with custom template",
     "type": "library",
     "require": {
