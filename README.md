@@ -1,6 +1,5 @@
-<div align="center">
-  <img src="./icon.jpg" alt="logo">
-</div>
+
+![icon](https://imgur.com/x91V9lA.jpg)
 
 # Description
 ### This package helps you to create safe numeric codes with your custome template.  
