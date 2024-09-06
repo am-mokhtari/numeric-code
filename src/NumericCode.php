@@ -93,18 +93,13 @@ class NumericCode
     /**
      * @param array $array
      * @param mixed $search
-     * @param bool $strict default is true
      * @return int
      */
-    private static function getCountInArray(array $array, mixed $search, bool $strict = true): int
+    private static function getCountInArray(array $array, mixed $search): int
     {
         $i = 0;
         foreach ($array as $item) {
-            if (
-                ($strict and $item === $search)
-                or
-                (!$strict and $item == $search)
-            )
+            if ($item === $search)
                 $i++;
         }
         return $i;
