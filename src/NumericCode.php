@@ -6,8 +6,8 @@ use Exception;
 
 class NumericCode
 {
-    private static int $twoDigitsCount;
-    private static int $consecutiveNumsCount;
+    private static bool $twoDigitsCount;
+    private static bool $consecutiveNumsCount;
 
     /**
      * @param string $template : # means digit
@@ -17,11 +17,11 @@ class NumericCode
      */
     public static function generate(string $template): string
     {
-        self::$twoDigitsCount = 0;
-        self::$consecutiveNumsCount = 0;
-
+        self::$twoDigitsCount = false;
+        self::$consecutiveNumsCount = false;
         $template = trim($template);
         $count = substr_count($template, '#');
+
         if ($count > 8) {
             throw new Exception('Digits must be at most 8');
         }
@@ -84,7 +84,7 @@ class NumericCode
                 ($code[$lastKey] - $code[$lastKey - 1]) ** 2 === 1 or self::$consecutiveNumsCount > 0
             )
                 return false;
-            self::$consecutiveNumsCount++;
+            self::$consecutiveNumsCount = true;
         }
 
         return true;
