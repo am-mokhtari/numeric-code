@@ -111,7 +111,3 @@ class NumericCode
     }
 
 }
-
-//print_r(NumericCode::generate('hello-###/world'));
-//print_r(NumericCode::generate('hello-world'));
-//print_r(NumericCode::generate('#########'));
