@@ -3,6 +3,7 @@
 namespace AmMokhtari\NumericCode;
 
 use Exception;
+use Random\RandomException;
 
 class NumericCode
 {
@@ -50,7 +51,11 @@ class NumericCode
         $code = [];
         for ($i = 0; $i < $count; $i++) {
             do {
-                $digit = rand(1, 9);
+                try {
+                    $digit = random_int(1, 9);
+                } catch (RandomException $e) {
+                    $digit = rand(1, 9);
+                }
             } while (!self::verify_code($code, $digit));
             $code[] = $digit;
         }
