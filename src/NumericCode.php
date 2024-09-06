@@ -71,21 +71,17 @@ class NumericCode
         $digitCount = self::getCountInArray($code, $digit);
         $lastKey = array_key_last($code);
 
-        if ($digitCount > 1) {
+        if ($digitCount > 1)
             return false;
-
-        } elseif ($digitCount === 1) {
-            if (self::$twoDigitsCount > 0)
-                return false;
-            self::$twoDigitsCount++;
-
-        } elseif (($digit - $code[$lastKey]) ** 2 === 1) {
-            if (
-                ($code[$lastKey] - $code[$lastKey - 1]) ** 2 === 1 or self::$consecutiveNumsCount > 0
-            )
+        elseif ($digitCount === 1 and self::$twoDigitsCount)
+            return false;
+        elseif (($digit - $code[$lastKey]) ** 2 === 1) {
+            if (self::$consecutiveNumsCount)
                 return false;
             self::$consecutiveNumsCount = true;
         }
+        if ($digitCount === 1)
+            self::$twoDigitsCount = true;
 
         return true;
     }
