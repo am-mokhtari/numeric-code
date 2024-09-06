@@ -10,6 +10,10 @@ class NumericCode
     private static bool $twoDigitsCount;
     private static bool $consecutiveNumsCount;
 
+    private function __construct()
+    {
+    }
+
     /**
      * @param string $template : # means digit
      * Digits must be at most 8
