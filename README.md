@@ -2,7 +2,7 @@
 ![icon](https://i.imgur.com/x91V9lA.jpg)
 
 # Description
-### This package helps you to create safe numeric codes with your custome template.  
+### This package helps you to create safe and unpredictable numeric codes with your custome template.  
 ### The template you enter is a required value for the generator function and must contain a number of `#` to replace each `#` with a digit.
 
 ### _Note that this program can only create codes up to `8` digits!_
@@ -11,19 +11,19 @@
 
 - The number of repetitions of each digit in the whole number cannot be more than two times.
 
-  For example, the number `23242` is not allowed because the digit `2` appears three times.
+  - For example, the number `23242` is not allowed because the digit `2` appears three times.
 
 - Only one digit can appear twice in the whole number and the rest of the digits are not allowed to be repeated.
 
-  For example, the number `2332` is not allowed.
+  - For example, the number `2332` is not allowed.
 
 - Only two consecutive digits are allowed together.
 
-  For example, numbers `232` or `234` are not allowed, but `235` is allowed
+  - For example, numbers `232` or `234` are not allowed, but `235` is allowed
 
 - Consecutive numbers can only appear once in the whole number.
 
-  For example, in the number `2354`, because `2` and `3` are next to each other and `4` and `5` are next to each other, it is not allowed!
+  - For example, in the number `2354`, because `2` and `3` are next to each other and `4` and `5` are next to each other, it is not allowed!
 
 # How to use
 ### install package
@@ -32,11 +32,19 @@ composer require https://packagist.org/packages/am-mokhtari/numeric_code
 ```
 
 use the ***generator()*** static function and set a template like below:
-```
+```php
 $string_code = NumericCode::generate('new code : #-#/#&#');
 ```
 the output will be like this:
 > "new code : 3-5/6&3"
+
+or
+
+```php
+$string_code = NumericCode::generate('##-##');
+```
+the output will be like this:
+> "31-98"
 
 .
 
@@ -87,11 +95,19 @@ composer require https://packagist.org/packages/am-mokhtari/numeric_code
 ```
 
 از تابع استاتیک **generator()** استفاده کنید و قالب مورد نظر را به آن بدهید، مثل کد زیر:
-```
+```php
 $string_code = NumericCode::generate('new code : #-#/#&#');
 ```
 خروجی چیزی شبیه به این خواهد بود:
 > "new code : 3-5/6&3"
+
+یا
+
+```php
+$string_code = NumericCode::generate('new code : ##-##');
+```
+خروجی چیزی شبیه به این خواهد بود:
+> "new code : 31-98"
 
 .
 
