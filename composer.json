@@ -1,6 +1,6 @@
 {
     "name": "am-mokhtari/numeric-code",
-    "description": "numeric code generator with custom template",
+    "description": "non-guessable numeric code generator",
     "type": "library",
     "require": {
         "php": "^8.2"
