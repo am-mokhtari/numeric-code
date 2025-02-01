@@ -1,4 +1,4 @@
-![icon](https://i.imgur.com/x91V9lA.jpg) 
+![Imgur](https://i.imgur.com/Yrywt79.jpg)
 
 
 
@@ -11,19 +11,19 @@
 ### The numbers created by this package meet the following conditions:
 
 - The repetition of each digit in the whole number cannot be more than twice.
-  
+
   - For example, the number `23242` is not allowed because the digit `2` appears three times.
 
 - Only one digit can appear twice in the whole number; the rest of the digits cannot be repeated.
-  
+
   - For example, the number `2332` is not allowed.
 
 - Only two consecutive digits are allowed.
-  
+
   - For example, the numbers `232` or `234` are not allowed, but `235` is allowed.
 
 - Consecutive numbers next to each other can appear only once in the whole number.
-  
+
   - For example, in the number `2354`, `2` and `3` are next to each other and `4` and `5` are next to each other, which is not allowed!
 
 ---
@@ -72,25 +72,25 @@ The output will be something like:
 
 
 - تعداد تکرار هر رقم در کل عدد نمیتواند بیش از دو مرتبه باشد.
-  
+
   - مثلا عدد `۲۳۲۴۲` چون سه مرتبه عدد `۲` ظاهر شده مجاز نیست.
 
 
 
 - فقط یک رقم میتواند در کل عدد دو مرتبه ظاهر شود و باقی ارقام مجاز به تکرار نیستند.
-  
+
   - مثلا عدد `۲۳۳۲` مجاز نیست.
 
 
 
 - فقط دو رقم متوالی در کنار هم مجاز هستند.
-  
+
   - مثلا عدد `۲۳۲` یا `۲۳۴` مجاز نیستند ولی `۲۳۵` مجاز است
 
 
 
 - اعداد متوالی در کنار هم فقط یکبار میتوانند در کل عدد ظاهر شوند
-  
+
   - مثلا، در عدد `۲۳۵۴` چون `۲` و `۳` کنار هم و `۴` و `۵` کنار یکدیگر هستند و مجاز نیست!
 
 ---
