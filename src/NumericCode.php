@@ -3,111 +3,95 @@
 namespace AmMokhtari\NumericCode;
 
 use Exception;
-use Random\RandomException;
 
 class NumericCode
 {
+    private static array $code;
+    private static array $possibleNumbers;
     private static bool $twoDigitsCount;
     private static bool $consecutiveNumsCount;
 
+    /**
+     * @throws Exception
+     */
     private function __construct()
     {
     }
 
     /**
-     * @param string $template : # means digit
-     * Digits must be at most 8
-     * @return string
+     * @param int $length : amount of code
      * @throws Exception
      */
-    public static function generate(string $template): string
+    public static function generate(int $length): string
     {
+        if ($length > 8 || $length < 1)
+            throw new Exception('Digits must be more than 1 and at most 8', 403);
+
+        self::$possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        self::$code = [];
         self::$twoDigitsCount = false;
         self::$consecutiveNumsCount = false;
-        $template = trim($template);
-        $count = substr_count($template, '#');
 
-        if ($count > 8) {
-            throw new Exception('Digits must be at most 8');
-        }
-
-        $numbers = self::numbersGenerator($count);
-
-        $pos = strpos($template, '#');
-        while ($pos !== false) {
-            $template = substr_replace($template, array_shift($numbers), $pos, 1);
-            $pos = strpos($template, '#');
-        }
-
-        return $template;
+        for ($i = 0; $i < $length; $i++)
+            self::$code[] = self::getNumber(self::$possibleNumbers, $length);
+        return implode('', self::$code);
     }
 
     /**
-     * @param int $count
-     * @return array
+     * @throws Exception
      */
-    private static function numbersGenerator(int $count): array
+    private static function getNumber(array $selections, int $length): int
     {
-        if ($count < 1) {
-            return [];
+        $count = count($selections);
+        if ($count === 0) {
+            self::fail($length);
+            exit();
         }
-
-        $code = [];
-        for ($i = 0; $i < $count; $i++) {
-            do {
-                try {
-                    $digit = random_int(1, 9);
-                } catch (RandomException $e) {
-                    $digit = rand(1, 9);
-                }
-            } while (!self::verify_code($code, $digit));
-            $code[] = $digit;
-        }
-
-        return $code;
+        $key = rand(0, $count - 1);
+        $digit = $selections[$key];
+        if (self::verify_code($digit))
+            return $digit;
+        unset($selections[$key]);
+        return self::getNumber(array_values($selections), $length);
     }
 
-    /**
-     * @param array $code
-     * @param int $digit
-     * @return bool
-     */
-    private static function verify_code(array $code, int $digit): bool
+    private static function verify_code(int $digit): bool
     {
-        if (empty($code))
-            return true;
-
-        $digitCount = self::getCountInArray($code, $digit);
-        $lastKey = array_key_last($code);
-
-        if ($digitCount > 1)
-            return false;
-        elseif ($digitCount === 1 and self::$twoDigitsCount)
-            return false;
-        elseif (($digit - $code[$lastKey]) ** 2 === 1) {
-            if (self::$consecutiveNumsCount)
+        $lastValue = end(self::$code);
+        if ($lastValue !== false) {
+            $digitCount = in_array($digit, self::$code);
+            if ($digitCount && self::$twoDigitsCount) {
+                self::removeImpossible($digit);
                 return false;
-            self::$consecutiveNumsCount = true;
+            } elseif (abs($digit - $lastValue) === 1) {
+                if (self::$consecutiveNumsCount)
+                    return false;
+                self::$consecutiveNumsCount = true;
+            }
+            if ($digitCount) {
+                self::$twoDigitsCount = true;
+                self::removeImpossible($digit);
+            }
         }
-        if ($digitCount === 1)
-            self::$twoDigitsCount = true;
-
         return true;
     }
 
-    /**
-     * @param array $array
-     * @param mixed $search
-     * @return int
-     */
-    private static function getCountInArray(array $array, mixed $search): int
+    private static function removeImpossible(int $digit): void
     {
-        $i = 0;
-        foreach ($array as $item) {
-            if ($item === $search)
-                $i++;
-        }
-        return $i;
+        unset(self::$possibleNumbers[array_search($digit, self::$possibleNumbers)]);
+        self::$possibleNumbers = array_values(self::$possibleNumbers);
     }
 
+    /**
+     * @throws Exception
+     */
+    private static function fail(int $length): void
+    {
+        static $fail = 0;
+        $fail++;
+        if ($fail > 2)
+            throw new Exception("The program tried 3 times but didn't find a numeric code!", 500);
+        self::generate($length);
+        exit();
+    }
 }
