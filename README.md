@@ -31,7 +31,7 @@
 ### Install the package using the following command:
 
 ```shell
-composer require https://packagist.org/packages/am-mokhtari/numeric_code
+composer require am-mokhtari/numeric-code
 ```
 
 Use the static function **generate()** and provide the desired format, like the code below:
